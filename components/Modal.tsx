@@ -1,12 +1,11 @@
 import { modalState, movieState } from '@/atoms/modalAtoms';
 import MuiModal from '@mui/material/Modal'
 import { useRecoilState } from 'recoil';
-import { GrClose } from 'react-icons/gr';
 import toast, { Toaster } from 'react-hot-toast'
 import { useEffect, useState } from 'react';
 import { Element, Genre } from '@/typings';
 import ReactPlayer from 'react-player';
-import { FaPlay, FaPlus, FaThumbsDown, FaVolumeOff, FaVolumeUp } from 'react-icons/fa';
+import { FaPlay, FaPlus, FaThumbsDown, FaTimes, FaVolumeOff, FaVolumeUp } from 'react-icons/fa';
 
 const Modal = () => {
     const [movie, setMovie] = useRecoilState(movieState)
@@ -58,9 +57,9 @@ const Modal = () => {
         >
             <>
                 <button onClick={handleClose} 
-                className="modalButton absoulte right-5 top-5 !z-40 w-9 h-9 border-none 
-                bg-[#181818] hover:bg-[#181818]">
-                    <GrClose className="h-6 w-6" />
+                className="modalButton absolute right-5 top-5 !z-40 h-9 w-9 
+                border-none bg-[#181818] hover:bg-[#181818]">
+                    <FaTimes stroke='#fff' color='#fff' className="h-6 w-6 stroke-white" />
                 </button>
 
                 <div className="relative pt-[56.25%]">
@@ -86,15 +85,14 @@ const Modal = () => {
                             <button className='modalButton'>
                                 <FaThumbsDown className='h-7 w-7'/>
                             </button>
-
-                            <button className='modalButton' onClick={() => setMuted(!muted)}>
-                                {muted ?  (
-                                    <FaVolumeOff className='h-6 w-6'/>
-                                ) : (
-                                    <FaVolumeUp className='h-6 w-6'/>
-                                )}
-                            </button>
                         </div>
+                        <button className='modalButton' onClick={() => setMuted(!muted)}>
+                            {muted ?  (
+                                <FaVolumeOff className='h-6 w-6'/>
+                            ) : (
+                                <FaVolumeUp className='h-6 w-6'/>
+                            )}
+                        </button>                        
                     </div>
                 </div>
                 <div className='flex space-x-16 rounded-b-md bg-[#181818] px-10 py-8'>
